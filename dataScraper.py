@@ -45,8 +45,10 @@ for event in events:
 
 
             ts = int(timestamp_parts[0])
-
+            
+            #convert time to GMT + 1
             local_timestamp = datetime.utcfromtimestamp(ts) + timedelta(minutes=60)
+            
             print("Due date: " + local_timestamp.strftime('%Y-%m-%d %H:%M:%S'))
             file.write("Due date: " + local_timestamp.strftime('%Y-%m-%d %H:%M:%S'))
             file.write("\r\n")
@@ -57,6 +59,7 @@ for event in events:
         file.write(event_text)
         file.write("\r\n\r\n")
 
+file.close()
 sys.exit(0)
 
 
